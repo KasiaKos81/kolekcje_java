@@ -21,7 +21,10 @@ public class MagazynMain2 {
         magazyn.wypiszListeProduktow();
         magazyn.usunProdukt("krem");
         magazyn.zwrocProdukt("lakierCzerwony");
-        magazyn.zwiekszStanMagazynowy("lakierCzerwony", 2.0);
+        magazyn.zwiekszStanMagazynowy("lakierCzerwony", 5.0);
+
+        magazyn.wypiszListeProduktowPoZmianach();
+
 
 
 

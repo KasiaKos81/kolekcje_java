@@ -5,10 +5,13 @@ import kolekcje_java.dziennik.Student;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Scanner;
 
 public class Magazyn {
 
     private Map<String, StanMagazynowyProduktu> mapaStanu = new HashMap<>();
+
+    Scanner scanner = new Scanner(System.in);
 
     public void dodajProdukt(String nazwa, Jednostka jednostka){
         if(mapaStanu.containsKey(nazwa)){
@@ -48,6 +51,13 @@ public class Magazyn {
         } else {
             System.out.println("nie ma takiego produktu");
             return Optional.empty();
+        }
+    }
+
+    public void wypiszListeProduktowPoZmianach(){
+        System.out.println("Lista produktów :");
+        for (StanMagazynowyProduktu produkty : mapaStanu.values()) {
+            System.out.println(produkty);
         }
     }
 
