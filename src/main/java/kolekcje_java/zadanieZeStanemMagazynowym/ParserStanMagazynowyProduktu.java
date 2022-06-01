@@ -1,5 +1,8 @@
 package kolekcje_java.zadanieZeStanemMagazynowym;
 
+import kolekcje_java.dziennik.Student;
+
+import java.util.Optional;
 import java.util.Scanner;
 
 public class ParserStanMagazynowyProduktu {
@@ -15,7 +18,7 @@ public class ParserStanMagazynowyProduktu {
         String polecenie;
 
         do {
-            System.out.println("podaj polecenie: dodaj, wypisz, zwroc, usun, zwieksz, zmniejsz lub podaj 'quit' by zakonczyc");
+            System.out.println("podaj polecenie: dodaj, wypisz, zwrocProdukt, usun, zwieksz, zmniejsz lub podaj 'quit' by zakonczyc");
             polecenie = scanner.next();
             switch (polecenie){
                 case "dodaj":
@@ -24,14 +27,14 @@ public class ParserStanMagazynowyProduktu {
                 case "wypisz":
                     magazyn.wypiszListeProduktow();
                     break;
-                case "zwroc":
-
-
+                case "zwrocProdukt":
+                    obslugaPoleceniaZwrocProdukt();
+                    break;
 
             }
         }  while (!polecenie.equalsIgnoreCase("quit"));
     }
-    public void obslugaPoleceniaDodaj(){
+    public void obslugaPoleceniaDodaj() {
         System.out.println("podaj nazwę");
         String nazwa = scanner.next();
 
@@ -44,4 +47,18 @@ public class ParserStanMagazynowyProduktu {
             System.out.println("Nie ma takiej jednostki");
 
         }
-}}
+    }
+    public void obslugaPoleceniaZwrocProdukt(){
+        System.out.println("Podaj nazwę:");
+        String nazwa = scanner.next();
+        Optional<StanMagazynowyProduktu> zwroconyProdukt = magazyn.zwrocProdukt(nazwa);
+        if(zwroconyProdukt.isPresent()){
+            StanMagazynowyProduktu stanMagazynowyProduktu = zwroconyProdukt.get();
+            System.out.println("Jest taki produkt jak: " + stanMagazynowyProduktu);
+        }else{
+            System.out.println("Nie ma, bo nie");
+        }
+    }
+    }
+
+
