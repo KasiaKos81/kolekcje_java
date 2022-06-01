@@ -21,6 +21,13 @@ public class ParserStanMagazynowyProduktu {
                 case "dodaj":
                     obslugaPoleceniaDodaj();
                     break;
+                case "wypisz":
+                    magazyn.wypiszListeProduktow();
+                    break;
+                case "zwroc":
+
+
+
             }
         }  while (!polecenie.equalsIgnoreCase("quit"));
     }
