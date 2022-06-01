@@ -1,16 +1,12 @@
 package kolekcje_java.zadanieZeStanemMagazynowym;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class MagazynMain2 {
 
     public static void main(String[] args) {
 
         Map<String, StanMagazynowyProduktu> mapaStanu = new HashMap<>();
-
-        Scanner scanner = new Scanner(System.in);
 
         Magazyn magazyn = new Magazyn();
 
@@ -20,15 +16,27 @@ public class MagazynMain2 {
 
         magazyn.wypiszListeProduktow();
         magazyn.usunProdukt("krem");
-        magazyn.zwrocProdukt("lakierCzerwony");
-        magazyn.zwiekszStanMagazynowy("lakierCzerwony", 5.0);
+        Optional <StanMagazynowyProduktu> wynik = magazyn.zwrocProdukt("lakierCzerwony");
+        System.out.println(wynik);
+        magazyn.zwiekszStanMagazynowy("lakierCzerwony", 20.0);
+        magazyn.zwiekszStanMagazynowy("lakierCzerwony", 20.0);
+        magazyn.zmniejszStanMagazynowy("lakierCzerwony", 2.0);
 
-        magazyn.wypiszListeProduktowPoZmianach();
+        Optional<StanMagazynowyProduktu> optionalStanMagazynowyProduktu = magazyn.zwrocProdukt("lakierCzerwony");
+        if (optionalStanMagazynowyProduktu.isPresent()) {
+            StanMagazynowyProduktu stanMagazynowyProduktu = optionalStanMagazynowyProduktu.get();
 
+            System.out.println("Stan magazynowy produktu lakier to: " + stanMagazynowyProduktu.getIlosc());
+        } else {
+            System.out.println("Nie znaleziono produktu");
+        }
 
+        List<StanMagazynowyProduktu> listaZakupowa = magazyn.zwrocListe(30);
+        System.out.println("Lista zakupowa:");
+        for (StanMagazynowyProduktu stanMagazynowyProduktu : listaZakupowa) {
+            System.out.println(stanMagazynowyProduktu);
+        }
+        System.out.println("Ilosc produktow na liscie zakupowej to: " + listaZakupowa.size());
+    }
+}
 
-
-
-
-
-}}

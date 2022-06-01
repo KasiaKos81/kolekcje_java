@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class StanMagazynowyProduktu {
 
-    String nazwa;
-    double ilosc;
-    Jednostka jednostka;
+    private String nazwa;
+    private double ilosc;
+    private Jednostka jednostka;
 
     public StanMagazynowyProduktu(String nazwa, double ilosc, Jednostka jednostka) {
         this.nazwa = nazwa;

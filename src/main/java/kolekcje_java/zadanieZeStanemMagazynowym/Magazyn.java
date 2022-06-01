@@ -2,10 +2,7 @@ package kolekcje_java.zadanieZeStanemMagazynowym;
 
 import kolekcje_java.dziennik.Student;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 public class Magazyn {
 
@@ -43,15 +40,27 @@ public class Magazyn {
             return Optional.empty();
         }
     }
-    public Optional<StanMagazynowyProduktu> zwiekszStanMagazynowy(String nazwa, double ilosc){
-        if(mapaStanu.containsKey(nazwa)){
-            StanMagazynowyProduktu stanMagazynowyProduktu = mapaStanu.get(nazwa);
-            stanMagazynowyProduktu.setIlosc(stanMagazynowyProduktu.getIlosc() + ilosc);
-            return Optional.of(mapaStanu.get(nazwa));
-        } else {
-            System.out.println("nie ma takiego produktu");
-            return Optional.empty();
+    public void zwiekszStanMagazynowy(String nazwa, double ilosc){
+        if(!mapaStanu.containsKey(nazwa)){
+            System.out.println("produkt nie istnieje");
+            return;
         }
+        StanMagazynowyProduktu stanMagazynowyProduktu = mapaStanu.get(nazwa);
+        stanMagazynowyProduktu.setIlosc((stanMagazynowyProduktu.getIlosc()) + ilosc);
+    }
+    public void zmniejszStanMagazynowy(String nazwa, double ilosc){
+        if(!mapaStanu.containsKey(nazwa)){
+            System.out.println("produkt nie istnieje");
+            return;
+        }
+        double roznicaStanuIlosci = mapaStanu.get(nazwa).getIlosc() - ilosc;
+        if (roznicaStanuIlosci < 0){
+            System.out.println("za mało produktu");
+            return;
+        }
+        StanMagazynowyProduktu stanMagazynowyProduktu = mapaStanu.get(nazwa);
+        stanMagazynowyProduktu.setIlosc((stanMagazynowyProduktu.getIlosc()) - ilosc);
+
     }
 
     public void wypiszListeProduktowPoZmianach(){
@@ -60,7 +69,17 @@ public class Magazyn {
             System.out.println(produkty);
         }
     }
+    public List<StanMagazynowyProduktu> zwrocListe(double ilosc) {
+        List<StanMagazynowyProduktu> zwracanaLista = new ArrayList<>();
+        for (StanMagazynowyProduktu value : mapaStanu.values()) {
+            if (value.getIlosc() < ilosc) {
+                zwracanaLista.add(value);
+            }
+        }
+        return zwracanaLista;
+
+    }}
 
 
 
-}
+
