@@ -30,6 +30,9 @@ public class ParserStanMagazynowyProduktu {
                 case "zwrocProdukt":
                     obslugaPoleceniaZwrocProdukt();
                     break;
+                case "usun":
+                    obslugaPoleceniaUsun();
+                    break;
 
             }
         }  while (!polecenie.equalsIgnoreCase("quit"));
@@ -49,7 +52,7 @@ public class ParserStanMagazynowyProduktu {
         }
     }
     public void obslugaPoleceniaZwrocProdukt(){
-        System.out.println("Podaj nazwę:");
+        System.out.println("Podaj nazwę produktu");
         String nazwa = scanner.next();
         Optional<StanMagazynowyProduktu> zwroconyProdukt = magazyn.zwrocProdukt(nazwa);
         if(zwroconyProdukt.isPresent()){
@@ -58,6 +61,11 @@ public class ParserStanMagazynowyProduktu {
         }else{
             System.out.println("Nie ma, bo nie");
         }
+    }
+    public void obslugaPoleceniaUsun(){
+        System.out.println("Podaj nazwę produktu");
+        String nazwa = scanner.next();
+        magazyn.usunProdukt(nazwa);
     }
     }
 
