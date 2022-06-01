@@ -33,6 +33,9 @@ public class ParserStanMagazynowyProduktu {
                 case "usun":
                     obslugaPoleceniaUsun();
                     break;
+                case "zwieksz":
+                    obslugaPoleceniaZwieksz();
+                    break;
 
             }
         }  while (!polecenie.equalsIgnoreCase("quit"));
@@ -66,6 +69,13 @@ public class ParserStanMagazynowyProduktu {
         System.out.println("Podaj nazwę produktu");
         String nazwa = scanner.next();
         magazyn.usunProdukt(nazwa);
+    }
+    public void obslugaPoleceniaZwieksz(){
+        System.out.println("Podaj nazwę produktu");
+        String nazwa = scanner.next();
+        System.out.println("Podaj Ilość");
+        double ilosc = scanner.nextDouble();
+        magazyn.zwiekszStanMagazynowy(nazwa, ilosc);
     }
     }
 
