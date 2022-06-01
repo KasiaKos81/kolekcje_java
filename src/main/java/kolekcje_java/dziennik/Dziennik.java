@@ -79,4 +79,7 @@ public class Dziennik {
         }
         return listaZagrozonychStudentow;
     }
+    public boolean sprawdzCzyJestStudent(String numerIndeksu){
+        return mapaStudentow.containsKey(numerIndeksu);
+    }
 }

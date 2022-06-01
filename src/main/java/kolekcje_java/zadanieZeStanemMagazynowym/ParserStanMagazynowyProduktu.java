@@ -51,7 +51,6 @@ public class ParserStanMagazynowyProduktu {
             magazyn.dodajProdukt(nazwa, jednostka);
         } catch (IllegalArgumentException iae) {
             System.out.println("Nie ma takiej jednostki");
-
         }
     }
     public void obslugaPoleceniaZwrocProdukt(){
