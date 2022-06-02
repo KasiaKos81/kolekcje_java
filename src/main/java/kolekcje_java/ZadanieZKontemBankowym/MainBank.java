@@ -21,6 +21,8 @@ public class MainBank {
             System.err.println("Nie ma konta, Damyt!!!");
         }
         bank.sprawdzStanKonta("1234567");
+
+        bank.zwiekszStanKonta("1234567", 100.0);
     }
 
 }
