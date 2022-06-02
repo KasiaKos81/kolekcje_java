@@ -23,6 +23,7 @@ public class MainBank {
         bank.sprawdzStanKonta("1234567");
 
         bank.zwiekszStanKonta("1234567", 100.0);
+        bank.zmniejszStanKonta("1234567", 100.0);
     }
 
 }

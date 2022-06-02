@@ -13,15 +13,16 @@ public class Bank {
 
     Scanner scanner = new Scanner(System.in);
 
-    public void dodajKontoBankowe(String numerKonta){
-        if(mapaKont.containsKey(numerKonta)){
+    public void dodajKontoBankowe(String numerKonta) {
+        if (mapaKont.containsKey(numerKonta)) {
             System.err.println("Konto o podanym numerze już istanieje");
         } else {
             mapaKont.put(numerKonta, new KontoBankowe(numerKonta));
         }
     }
-    public Optional<KontoBankowe> zwrocKontoBankowe(String numerKonta){
-        if(mapaKont.containsKey(numerKonta)){
+
+    public Optional<KontoBankowe> zwrocKontoBankowe(String numerKonta) {
+        if (mapaKont.containsKey(numerKonta)) {
             System.out.println("Istnieje konto o numerze: " + numerKonta);
             return Optional.of(mapaKont.get(numerKonta));
         } else {
@@ -29,6 +30,7 @@ public class Bank {
             return Optional.empty();
         }
     }
+
     public void sprawdzStanKonta(String numerKonta) {
         if (!mapaKont.containsKey(numerKonta)) {
             System.out.println("Nie ma konta, Damyt!!!");
@@ -39,12 +41,24 @@ public class Bank {
             System.out.println("Stan konta to: " + stan);
         }
     }
-        public void zwiekszStanKonta(String numerKonta, double stanKonta){
-            if(!mapaKont.containsKey(numerKonta)){
-                System.out.println("Nie ma konta, Damyt!!!");
-                return;
-            }
-            KontoBankowe stanKontaBankowego = mapaKont.get(numerKonta);
-            stanKontaBankowego.setStanKonta((stanKontaBankowego.getStanKonta()) + stanKonta);
+
+    public void zwiekszStanKonta(String numerKonta, double stanKonta) {
+        if (!mapaKont.containsKey(numerKonta)) {
+            System.out.println("Nie ma konta, Damyt!!!");
+            return;
         }
+        KontoBankowe stanKontaBankowego = mapaKont.get(numerKonta);
+        stanKontaBankowego.setStanKonta((stanKontaBankowego.getStanKonta()) + stanKonta);
+        System.out.println("Stan konta po zwiększeniu to: " + stanKonta);
     }
+
+    public void zmniejszStanKonta(String numerKonta, double stanKonta) {
+        if (!mapaKont.containsKey(numerKonta)) {
+            System.out.println("Nie ma konta, Damyt!!!");
+            return;
+        }
+        KontoBankowe stanKontaBankowego = mapaKont.get(numerKonta);
+        stanKontaBankowego.setStanKonta((stanKontaBankowego.getStanKonta()) - stanKonta);
+        System.out.println("Stan konta po zmniejszeniu to: " + stanKonta);
+    }
+}
