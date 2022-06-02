@@ -19,4 +19,10 @@ public class BankTest {
         Optional<KontoBankowe> kontoBankoweOptional = bank.zwrocKontoBankowe("1234567");
         Assert.assertTrue(kontoBankoweOptional.isPresent());
     }
+
+    @Test
+    public void test_sprawdzenieStanuKonta(){
+        Bank bank = new Bank();
+
+    }
 }
