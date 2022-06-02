@@ -1,6 +1,5 @@
 package kolekcje_java.ZadanieZKontemBankowym;
 
-import kolekcje_java.dziennik.Student;
 import kolekcje_java.zadanieZeStanemMagazynowym.StanMagazynowyProduktu;
 
 import java.util.HashMap;
@@ -30,12 +29,22 @@ public class Bank {
             return Optional.empty();
         }
     }
-    public void sprawdzStanKonta(String numerKonta){
-        if(!mapaKont.containsKey(numerKonta)){
+    public void sprawdzStanKonta(String numerKonta) {
+        if (!mapaKont.containsKey(numerKonta)) {
             System.out.println("Nie ma konta, Damyt!!!");
             return;
-        } else { KontoBankowe stanKontaBankowego = mapaKont.get(numerKonta);
-           double stan = stanKontaBankowego.getStanKonta();
+        } else {
+            KontoBankowe stanKontaBankowego = mapaKont.get(numerKonta);
+            double stan = stanKontaBankowego.getStanKonta();
             System.out.println("Stan konta to: " + stan);
+        }
     }
-}}
+        public void zwiekszStanKonta(String numerKonta, double stanKonta){
+            if(!mapaKont.containsKey(numerKonta)){
+                System.out.println("Nie ma konta, Damyt!!!");
+                return;
+            }
+            KontoBankowe stanKontaBankowego = mapaKont.get(numerKonta);
+            stanKontaBankowego.setStanKonta((stanKontaBankowego.getStanKonta()) + stanKonta);
+        }
+    }

@@ -24,5 +24,7 @@ public class BankTest {
     public void test_sprawdzenieStanuKonta(){
         Bank bank = new Bank();
 
+
+
     }
 }
