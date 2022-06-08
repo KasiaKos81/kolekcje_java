@@ -20,7 +20,6 @@ public class Bank {
             mapaKont.put(numerKonta, new KontoBankowe(numerKonta));
         }
     }
-
     public Optional<KontoBankowe> zwrocKontoBankowe(String numerKonta) {
         if (mapaKont.containsKey(numerKonta)) {
             System.out.println("Istnieje konto o numerze: " + numerKonta);
@@ -31,14 +30,15 @@ public class Bank {
         }
     }
 
-    public void sprawdzStanKonta(String numerKonta) {
+    public Double sprawdzStanKonta(String numerKonta) {
         if (!mapaKont.containsKey(numerKonta)) {
             System.out.println("Nie ma konta, Damyt!!!");
-            return;
+            return null;
         } else {
             KontoBankowe stanKontaBankowego = mapaKont.get(numerKonta);
             double stan = stanKontaBankowego.getStanKonta();
             System.out.println("Stan konta to: " + stan);
+            return stan;
         }
     }
 

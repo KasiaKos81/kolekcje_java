@@ -19,12 +19,18 @@ public class BankTest {
         Optional<KontoBankowe> kontoBankoweOptional = bank.zwrocKontoBankowe("1234567");
         Assert.assertTrue(kontoBankoweOptional.isPresent());
     }
-
     @Test
     public void test_sprawdzenieStanuKonta(){
         Bank bank = new Bank();
-
-
-
+        bank.dodajKontoBankowe("1234567");
+        Optional<KontoBankowe> kontoBankoweOptional = bank.zwrocKontoBankowe("1234567");
+        Assert.assertTrue(kontoBankoweOptional.isPresent());
+        Double stan = bank.sprawdzStanKonta("1234567");
+        Assert.assertNotNull(stan);
+        Assert.assertEquals(0.0, (double)stan, 0.0);
+        Double stanOczekiwany = 0.0;
+        Assert.assertEquals(stanOczekiwany, stan);
+        Assert.assertTrue(stan == 0.0);
+        Assert.assertEquals(new Double(0.0), stan);
     }
 }
